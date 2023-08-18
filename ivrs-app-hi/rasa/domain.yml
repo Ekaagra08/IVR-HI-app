@@ -1,0 +1,14 @@
+version: "2.0"
+
+intents:
+  - loss_report
+  - unblock_report
+  - fraud_report
+
+responses:
+  loss_report:
+  - text: "Please give account no. of the lost card"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

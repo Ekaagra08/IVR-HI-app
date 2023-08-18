@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  rasa_nlu:
+    container_name: rasa_nlu
+    hostname: rasa_nlu
+    build: ./rasa
+    ports:
+      - "5005:5005"
+    restart: unless-stopped
+    working_dir: /app
+
+  ivr_web:
+    container_name: ivr_web
+    hostname: ivr_web
+    build: ./web
+    ports:
+      - "7007:7007"
+    restart: unless-stopped
+    volumes:
+      - ./web:/app
+    depends_on:
+      - rasa_nlu
